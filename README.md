@@ -59,6 +59,9 @@ Then configure the plugin:
                         </configuration>
                     </execution>
                 </executions>
+                <dependencies>
+                    <!-- any runtime dependencies required by your `GraphQLSchemaSupplier` implementation -->
+                </dependencies>
             </plugin>
         </plugins>
     </build>
@@ -68,3 +71,6 @@ Then configure the plugin:
 The above configuration binds this plugin's `build` goal to execute during compilation. So `mvn compile` will
  produce the introspection result JSON output in `${project.basedir}/webapp/schema.json`.
 
+Note that classloaders used during Maven plugin executions [do not include project compile or runtime dependencies](http://maven.apache.org/guides/mini/guide-maven-classloading.html).
+If your `GraphQLSchemaSupplier` has any class dependencies beyond the scope of the standard JDK libraries,
+they must be specified within the plugin configuration's `<dependencies>`.
