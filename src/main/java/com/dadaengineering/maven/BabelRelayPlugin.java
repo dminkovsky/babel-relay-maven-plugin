@@ -58,7 +58,7 @@ public class BabelRelayPlugin extends AbstractMojo {
 
     private void writeJson(byte[] json, Path path) throws MojoFailureException {
         try {
-            Files.write(path, json, StandardOpenOption.CREATE);
+            Files.write(path, json, StandardOpenOption.TRUNCATE_EXISTING);
         } catch (IOException e) {
             fail("Failed attempting to write schema JSON to '%s'", jsonDest);
         }
