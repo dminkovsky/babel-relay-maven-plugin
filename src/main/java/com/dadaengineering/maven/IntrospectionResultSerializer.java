@@ -18,6 +18,6 @@ class IntrospectionResultSerializer {
 
     byte[] serializer() throws JsonProcessingException {
         ExecutionResult result = graphql.execute(IntrospectionQuery.INTROSPECTION_QUERY);
-        return mapper.writeValueAsBytes(result.getData());
+        return mapper.writeValueAsBytes(result);
     }
 }
