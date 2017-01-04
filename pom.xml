@@ -10,11 +10,11 @@
 
     <groupId>com.dadaengineering</groupId>
     <artifactId>babel-relay-maven-plugin</artifactId>
-    <version>2.2.1</version>
+    <version>2.3.0</version>
     <packaging>maven-plugin</packaging>
 
     <properties>
-        <version.graphql>2.2.0</version.graphql>
+        <version.graphql>2.3.0</version.graphql>
         <version.maven>3.3.9</version.maven>
         <version.maven-plugin>3.5</version.maven-plugin>
         <version.jackson>2.7.0</version.jackson>
