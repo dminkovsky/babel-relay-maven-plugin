@@ -43,7 +43,7 @@ public class BabelRelayPlugin extends AbstractMojo {
         assertParameter(jsonDest, "jsonDest");
         ClassLoader loader = buildClassLoader();
         GraphQLSchemaSupplier plugin = getSupplier(loader);
-        GraphQLSchema schema = plugin.get();
+        GraphQLSchema schema = plugin.getSchema();
         IntrospectionResultSerializer serializer = new IntrospectionResultSerializer(new GraphQL(schema), mapper);
         byte[] json = getBytes(serializer);
         Path path = Paths.get(jsonDest);

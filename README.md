@@ -13,7 +13,7 @@ package com.example;
 
 public class MyGraphQLSchemaSupplier implements GraphQLSchemaSupplier {
     @Override
-    public GraphQLSchema get() {
+    public GraphQLSchema getSchema() {
         return newSchema()
             .query(newObject()
                 .name("Query")
