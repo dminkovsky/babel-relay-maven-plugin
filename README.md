@@ -36,9 +36,23 @@ Then configure the plugin:
     </properties>
     <dependencies>
         <dependency>
-            <groupId>com.dadaengineering</groupId>
+            <groupId>com.dadaengineering</groupId>  <!-- This is necessary for having the `GraphQLSchemaSupplier` interface on the class path at compile time -->
             <artifactId>babel-relay-maven-plugin</artifactId>
             <version>${version.babel-relay-maven-plugin}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.maven</groupId>
+                    <artifactId>maven-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.maven</groupId>
+                    <artifactId>maven-plugin-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.maven.plugin-tools</groupId>
+                    <artifactId>maven-plugin-annotations</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
     <build>
