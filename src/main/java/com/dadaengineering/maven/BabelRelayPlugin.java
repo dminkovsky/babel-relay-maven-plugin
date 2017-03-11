@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import graphql.GraphQL;
+import graphql.execution.SimpleExecutionStrategy;
 import graphql.schema.GraphQLSchema;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -44,7 +45,7 @@ public class BabelRelayPlugin extends AbstractMojo {
         ClassLoader loader = buildClassLoader();
         GraphQLSchemaSupplier plugin = getSupplier(loader);
         GraphQLSchema schema = plugin.getSchema();
-        IntrospectionResultSerializer serializer = new IntrospectionResultSerializer(new GraphQL(schema), mapper);
+        IntrospectionResultSerializer serializer = new IntrospectionResultSerializer(new GraphQL(schema, new SimpleExecutionStrategy()), mapper);
         byte[] json = getBytes(serializer);
         Path path = Paths.get(jsonDest);
         writeJson(json, path);
