@@ -59,7 +59,16 @@ public class BabelRelayPlugin extends AbstractMojo {
 
     private void writeJson(byte[] json, Path path) throws MojoFailureException {
         try {
-            Files.write(path, json, StandardOpenOption.TRUNCATE_EXISTING);
+            Files.delete(path);
+        }
+        catch (NoSuchFileException e) {
+            // this is fine
+        }
+        catch (IOException e) {
+            fail("Failed attempting to delete schema JSON at '%s'", jsonDest);
+        }
+        try {
+            Files.write(path, json, StandardOpenOption.CREATE_NEW);
         } catch (IOException e) {
             fail("Failed attempting to write schema JSON to '%s'", jsonDest);
         }
