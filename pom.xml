@@ -14,6 +14,8 @@
     <packaging>maven-plugin</packaging>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <version.graphql>3.0.0-SNAPSHOT</version.graphql>
         <version.maven>3.3.9</version.maven>
         <version.maven-plugin>3.5</version.maven-plugin>
